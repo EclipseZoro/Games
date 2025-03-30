@@ -1,5 +1,5 @@
 import React from "react";
-import FlappyBird from './games/reversi/game'; 
+import FlappyBird from './games/hex/game'; 
 
 function App() {
     return (
