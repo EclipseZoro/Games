@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import "./style.css";
 
 // Adjust these constants to control the bird's behavior
-const GRAVITY = 0.1;
-const JUMP_STRENGTH = 5;
-const DESCEND_STRENGTH = 2; // New constant for descending
+const GRAVITY = -0.1;
+const JUMP_STRENGTH = -5;
+const DESCEND_STRENGTH = -2; // New constant for descending
 const PIPE_WIDTH = 60;
 const PIPE_GAP = 180;
-const PIPE_SPEED = 3;
+const PIPE_SPEED = 2;
 const BIRD_X_POSITION = 100;
 const GAME_HEIGHT = 600;
 const GAME_WIDTH = 800;

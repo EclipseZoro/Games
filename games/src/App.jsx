@@ -1,10 +1,10 @@
 import React from "react";
-import Mastermindgame from './games/Mastermind/game'; 
+import FlappyBird from './games/TowerofHanoi/game'; 
 
 function App() {
     return (
         <div className="App">
-            <Mastermindgame />
+            <FlappyBird />
         </div>
     );
 }
