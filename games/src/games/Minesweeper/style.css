@@ -1,0 +1,123 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #e0e0e0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.minesweeper-container {
+    text-align: center;
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: min(90vw, 400px); /* Use min() to ensure it doesn't exceed 400px but can shrink on small screens */
+}
+
+h2 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #4CAF50;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 1px; /* Reduced gap to ensure all cells fit */
+    background-color: #2a2a2a;
+    border: 1px solid #444; /* Added border to contain the grid */
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto; /* Center the grid */
+}
+
+.cell {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #333;
+    border: none; /* Removed individual cell borders since we have gap */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px; /* Slightly reduced font size */
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cell:hover {
+    background-color: #3a3a3a;
+}
+
+.cell.revealed {
+    background-color: #2a2a2a;
+    cursor: default;
+    color: #4CAF50;
+}
+
+.cell.flag {
+    background-color: #8B0000;
+    color: white;
+}
+
+.restart-btn {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.restart-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+}
+
+.game-over, .game-won {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background: linear-gradient(135deg, #2a2a2a, #1e1e1e);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.game-over {
+    color: #ff6b6b;
+}
+
+.game-won {
+    color: #4CAF50;
+}
+
+@media (max-width: 450px) {
+    .minesweeper-container {
+        padding: 15px;
+    }
+    
+    .cell {
+        font-size: 14px; /* Further reduce font size on small screens */
+    }
+}

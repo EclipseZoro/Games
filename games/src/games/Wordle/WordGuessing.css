@@ -1,0 +1,152 @@
+body {
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: #e0e0e0;
+}
+
+.word-guessing-container {
+    text-align: center;
+    background-color: #1e1e1e;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #333;
+}
+
+h2 {
+    color: #4db8ff;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px auto;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.tile {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    font-weight: bold;
+    border: 2px solid #333;
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+}
+
+.tile.correct {
+    background-color: #538d4e; /* Wordle-like green for correct position */
+    color: white;
+    border-color: #538d4e;
+}
+
+.tile.misplaced {
+    background-color: #b59f3b; /* Wordle-like yellow for correct letter, wrong position */
+    color: white;
+    border-color: #b59f3b;
+}
+
+.tile.incorrect {
+    background-color: #3a3a3c; /* Dark gray for incorrect letters */
+    color: #818384;
+    border-color: #3a3a3c;
+}
+
+.correct {
+    background-color: #2ecc71;
+    color: white;
+    border-color: #27ae60;
+}
+
+.misplaced {
+    background-color: #f39c12;
+    color: white;
+    border-color: #d35400;
+}
+
+.incorrect {
+    background-color: #7f8c8d;
+    color: white;
+    border-color: #555;
+}
+
+.keyboard {
+    margin-top: 20px;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.keyboard button {
+    padding: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: #3c3c3c;
+    color: #e0e0e0;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.keyboard button:hover {
+    background-color: #4c4c4c;
+}
+
+.keyboard button.special {
+    background-color: #4db8ff;
+    color: #121212;
+}
+
+.keyboard button.special:hover {
+    background-color: #6ec2ff;
+}
+
+.message {
+    font-size: 1.2rem;
+    margin: 15px 0;
+    color: #4db8ff;
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background-color: #4db8ff;
+    color: #121212;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #6ec2ff;
+    transform: translateY(-2px);
+}
