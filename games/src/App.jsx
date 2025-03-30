@@ -1,10 +1,10 @@
 import React from "react";
-import Minesweeper from './games/Minesweeper/game'; 
+import Mastermindgame from './games/Mastermind/game'; 
 
 function App() {
     return (
         <div className="App">
-            <Minesweeper />
+            <Mastermindgame />
         </div>
     );
 }

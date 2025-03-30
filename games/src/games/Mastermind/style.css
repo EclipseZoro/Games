@@ -1,0 +1,455 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.mastermind-container {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #121212, #2c2c2c);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;  /* Horizontal centering */
+    align-items: center;      /* Vertical centering */
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0;                /* Ensure no default margins */
+    width: 380%;              /* Full width */
+}
+
+.screen {
+    background: rgba(30, 30, 30, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.6), 
+        0 0 20px rgba(78, 205, 196, 0.2);
+    max-width: 800px;         /* Limit maximum width */
+    width: 100%;              /* Responsive width */
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(78, 205, 196, 0.2);
+    margin: 0 auto;           /* Additional horizontal centering */
+}
+
+.screen::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center, 
+        rgba(78, 205, 196, 0.1) 0%, 
+        transparent 60%
+    );
+    animation: subtle-glow 10s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes subtle-glow {
+    0% {
+        transform: rotate(0deg) scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotate(360deg) scale(1.2);
+        opacity: 0.7;
+    }
+}
+
+.start-screen, .game-screen {
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+h1, h2 {
+    color: #FFD93D;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255, 217, 61, 0.5);
+}
+
+.instructions {
+    margin: 30px 0;
+    text-align: left;
+}
+
+.instructions p {
+    margin: 15px 0;
+    font-size: 0.9em;
+    color: #fff;
+}
+
+.color-guide {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.color-sample {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    padding: 12px 25px;
+    font-size: 1em;
+    cursor: pointer;
+    background: #FFD93D;
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    transition: all 0.3s ease;
+    margin: 5px;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: #FFE169;
+}
+
+button:disabled {
+    background: #666;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.start-button {
+    font-size: 1.2em;
+    padding: 15px 30px;
+    background: #4ECDC4;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.start-button:hover {
+    background: #45b8b0;
+}
+
+.rules-button {
+    background: rgba(255, 217, 61, 0.2);
+    color: white;
+}
+
+.rules-button:hover {
+    background: rgba(255, 217, 61, 0.3);
+}
+
+.game-header {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.game-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.attempts-container {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.attempt-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pegs {
+    display: flex;
+    gap: 10px;
+}
+
+.guess-peg {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.guess-peg.empty {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.feedback {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.feedback-peg {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.feedback-peg.black {
+    background-color: #000;
+    border-color: #fff;
+}
+
+.feedback-peg.white {
+    background-color: #fff;
+    border-color: #000;
+}
+
+.feedback-peg.empty {
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.color-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.colors {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.color-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    transition: transform 0.2s;
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+}
+
+.current-guess {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.check-button {
+    padding: 12px 25px;
+    font-size: 1em;
+    background: #4ECDC4;
+    color: #000;
+}
+
+.check-button:hover {
+    background: #45b8b0;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+}
+
+.close-button:hover {
+    color: #FFD93D;
+    transform: scale(1.1);
+}
+
+.rules-content {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.rules-section {
+    margin: 20px 0;
+}
+
+.rules-section h3 {
+    color: #FFD93D;
+    margin-bottom: 10px;
+}
+
+.rules-section ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.rules-section ul li {
+    margin: 10px 0;
+    position: relative;
+}
+
+.rules-section ul li:before {
+    content: "•";
+    color: #FFD93D;
+    position: absolute;
+    left: -20px;
+}
+
+.feedback-guide {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.feedback-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.win-screen, .game-over-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.win-title {
+    font-size: 2.5em;
+    color: #4ECDC4;
+    text-shadow: 0 0 15px rgba(78, 205, 196, 0.7);
+    animation: winPulse 1.5s infinite;
+}
+
+.win-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.secret-code {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+@keyframes winPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4ECDC4;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #45b8b0;
+}
+
+@media (max-width: 600px) {
+    .screen {
+        padding: 20px;
+        margin: 0 10px;
+        width: calc(100% - 20px);
+    }
+
+    .guess-peg, .color-option {
+        width: 30px;
+        height: 30px;
+    }
+
+    .feedback-peg {
+        width: 12px;
+        height: 12px;
+    }
+
+    .win-buttons {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .instructions p {
+        font-size: 0.8em;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+}
