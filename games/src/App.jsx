@@ -1,5 +1,5 @@
 import React from "react";
-import FlappyBird from './games/TowerofHanoi/game'; 
+import FlappyBird from './games/LightsOut/game'; 
 
 function App() {
     return (

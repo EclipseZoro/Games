@@ -1,0 +1,215 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.lights-out-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #121212, #2c2c2c);
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.welcome-screen, 
+.congrats-screen {
+    background: rgba(30, 30, 30, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 500px;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.6), 
+        0 0 20px rgba(78, 205, 196, 0.2);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(78, 205, 196, 0.2);
+}
+
+.welcome-screen::before, 
+.congrats-screen::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center, 
+        rgba(78, 205, 196, 0.1) 0%, 
+        transparent 60%
+    );
+    animation: subtle-glow 10s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes subtle-glow {
+    0% {
+        transform: rotate(0deg) scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotate(360deg) scale(1.2);
+        opacity: 0.7;
+    }
+}
+
+.game-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    padding: 20px;
+    background: #2a2a2a;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+.cell {
+    width: 60px;
+    height: 60px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid #333;
+}
+
+.cell:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(78, 205, 196, 0.3);
+}
+
+.cell.on {
+    background: #4ECDC4;
+    box-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
+    border-color: #45b8b0;
+}
+
+.rules {
+    margin: 20px 0;
+    text-align: left;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(78, 205, 196, 0.2);
+}
+
+.rules h3 {
+    color: #4ECDC4;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #4ECDC4;
+    padding-bottom: 10px;
+}
+
+.rules p {
+    margin: 10px 0;
+    color: #e0e0e0;
+    position: relative;
+    padding-left: 20px;
+}
+
+.rules p::before {
+    content: "•";
+    color: #4ECDC4;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    padding: 12px 25px;
+    font-size: 18px;
+    background: #4ECDC4;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    margin: 10px;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    background: #45b8b0;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+}
+
+.rules-button {
+    background: #2196F3;
+    color: white;
+}
+
+.rules-button:hover {
+    background: #1976D2;
+}
+
+.reset-button {
+    background: #FF6B6B;
+}
+
+.reset-button:hover {
+    background: #ff5252;
+}
+
+.moves-counter {
+    color: #4ECDC4;
+    margin: 10px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+h1 {
+    color: #4ECDC4;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
+}
+
+.congrats-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+@keyframes resetFlash {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.reset-flash {
+    animation: resetFlash 0.3s ease-in-out;
+}
+
+@media (max-width: 600px) {
+    .cell {
+        width: 50px;
+        height: 50px;
+    }
+
+    .welcome-screen, 
+    .congrats-screen {
+        padding: 20px;
+        margin: 0 10px;
+    }
+}

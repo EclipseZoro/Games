@@ -1,0 +1,173 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sliding-puzzle-container {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #121212, #2c2c2c);
+    box-sizing: border-box;
+    
+}
+
+.start-page, .game-container {
+    text-align: center;
+    background: rgba(30, 30, 30, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.6), 
+        0 0 20px rgba(78, 205, 196, 0.2);
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(78, 205, 196, 0.2);
+}
+
+.start-page::before, 
+.game-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle at center, 
+        rgba(78, 205, 196, 0.1) 0%, 
+        transparent 60%
+    );
+    animation: subtle-glow 10s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes subtle-glow {
+    0% {
+        transform: rotate(0deg) scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotate(360deg) scale(1.2);
+        opacity: 0.7;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.puzzle {
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: repeat(4, 80px);
+    gap: 4px;
+    margin: 20px auto;
+    background-color: #2a2a2a;
+    border: 4px solid #2a2a2a;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: #4ECDC4;
+    color: black;
+    border: 2px solid #45b8b0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.tile:hover {
+    background-color: #45b8b0;
+    transform: scale(0.98);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.tile.empty {
+    background-color: #1a1a1a;
+    cursor: default;
+    color: #1a1a1a;
+}
+
+.tile.empty:hover {
+    background-color: #1a1a1a;
+    transform: none;
+    box-shadow: none;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    padding: 12px 25px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    background-color: #4ECDC4;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    background-color: #45b8b0;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+}
+
+.start-button {
+    font-size: 18px;
+    padding: 15px 30px;
+}
+
+.shuffle-button {
+    background-color: #FF6B6B;
+}
+
+.shuffle-button:hover {
+    background-color: #ff5252;
+}
+
+.restart-button {
+    background-color: #4CAF50;
+}
+
+.restart-button:hover {
+    background-color: #45a049;
+}
+
+.message {
+    margin: 20px 0;
+    font-size: 18px;
+    color: #4ECDC4;
+    min-height: 27px;
+}
+
+@media (max-width: 400px) {
+    .puzzle {
+        grid-template-columns: repeat(4, 70px);
+        grid-template-rows: repeat(4, 70px);
+    }
+    
+    .tile {
+        font-size: 20px;
+    }
+
+    .start-page, .game-container {
+        padding: 20px;
+        margin: 0 10px;
+    }
+}
